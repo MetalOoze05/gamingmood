@@ -6,7 +6,7 @@ const LoginBtn: React.FC<{ session: any }> = ({ session }) => {
     if (session) {
         return (
             <>
-                <div className='flex flex-row justify-center gap-5 items-center border px-4 py-2 rounded-md'>
+                <div className='flex flex-row justify-center gap-2 items-center border px-3 py-2 rounded-md'>
                     <Image 
                         loading='lazy'
 
@@ -16,11 +16,11 @@ const LoginBtn: React.FC<{ session: any }> = ({ session }) => {
                         width={35}
                         height={35}
 
-                        className="rounded-full" 
+                        className="rounded-md" 
                     />
                     <div className="flex flex-col">
                         <h2 className='text-sm'>{session.user?.name}</h2>
-                        <button className='max-w-fit text-xs text-red-500' onClick={() => signOut()}>Log out</button>
+                        <button className='text-xs text-red-500' onClick={() => signOut()}>Log out</button>
                     </div>
                 </div>
             </>
@@ -30,7 +30,7 @@ const LoginBtn: React.FC<{ session: any }> = ({ session }) => {
     return (
         <button 
             className='px-4 py-2 font-medium border rounded-md bg-transparent hover:bg-white hover:text-black' 
-            onClick={() => signIn("discord")}
+            onClick={() => signIn("spotify")}
         >
             Login
         </button>
