@@ -1,5 +1,6 @@
 import React from 'react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
+
 import Image from 'next/image';
 
 const LoginBtn: React.FC<{ session: any }> = ({ session }) => {

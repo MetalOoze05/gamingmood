@@ -55,7 +55,7 @@ export const gameRouter = createRouter()
         }),
         async resolve({ ctx, input }) {            
             try {
-                let obj: Response[] = [];
+                const obj: Response[] = [];
 
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
@@ -68,7 +68,7 @@ export const gameRouter = createRouter()
                 });
 
                 const songs = await response.data.choices.map((ch) => ch.text?.toString().slice(2));
-                let lines = await songs?.toString().split("\n");
+                const lines = await songs?.toString().split("\n");
                                 
                 const user = await ctx.prisma.account.findFirst({
                     where: {
@@ -76,7 +76,7 @@ export const gameRouter = createRouter()
                     }
                 });
 
-                for (let line of lines) {
+                for (const line of lines) {
                     const l = line.slice(3);
 
                     const data = await getYtSong(l);
