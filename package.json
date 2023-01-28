@@ -17,6 +17,7 @@
     "@trpc/next": "9",
     "@trpc/react": "9",
     "@trpc/server": "9",
+    "@vercel/og": "^0.0.27",
     "axios": "^1.2.5",
     "clsx": "^1.2.1",
     "next": "13.1.2",

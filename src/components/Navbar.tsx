@@ -8,7 +8,7 @@ const Navbar = () => {
 
     return (
         <header className='absolute left-0 top-0 w-full z-10 px-10'>
-            <div className="py-5 flex flex-row gap-5 border-white border-b">
+            <div className="py-5 flex flex-row gap-5 border-white">
                 <div className="w-full flex justify-between items-center">
                     <div className="flex gap-5">
                         <Link className='font-bold text-lg' href={"/"}>idk.</Link>

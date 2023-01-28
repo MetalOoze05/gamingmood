@@ -30,7 +30,7 @@ const LoginBtn: React.FC<{ session: any }> = ({ session }) => {
 
     return (
         <button 
-            className='px-4 py-2 font-medium border rounded-md bg-transparent hover:bg-white hover:text-black' 
+            className='px-4 py-2 text-xs md:text-md font-medium border rounded-md bg-transparent hover:bg-white hover:text-black' 
             onClick={() => signIn("spotify")}
         >
             Login

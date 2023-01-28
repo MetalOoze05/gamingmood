@@ -12,6 +12,7 @@ import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
 
 import Layout from "../components/Layout";
+import Head from "next/head";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -19,6 +20,22 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
+      <Head>
+        <title>idk.</title>
+        <meta property="title" content="idk." />
+        <meta property="description" content="Create the perfect playlist for the game you're playing!" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="idk." />
+        <meta property="od:description" content="Create the perfect playlist for the game you're playing!" />
+        <meta property="og:image" content="https://idk-zeta.vercel.app/api/og" /> 
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="idk." />
+        <meta property="twitter:description" content="Create the perfect playlist for the game you're playing!" />
+        <meta property="twitter:image" content="https://idk-zeta.vercel.app/api/og" /> 
+      </Head>
+      
       <Layout>
         <Component {...pageProps} />
       </Layout>
