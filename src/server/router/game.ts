@@ -32,11 +32,14 @@ export type Response = {
         }
     },
     audio: {
-        artist?: {
+        artist: {
             name: string,
+            link: string,
+            id: string,
+            image_url: string,
         },
         id: string,
-        images?: [],
+        image_url: string,
         name: string,
         type: string,
         artists?: [object],
@@ -64,9 +67,9 @@ export const gameRouter = createRouter()
                     presence_penalty: 0,
                 });
 
-                const songs = response.data.choices.map((ch) => ch.text?.toString().slice(2));
-                let lines = songs?.toString().split("\n");
-                
+                const songs = await response.data.choices.map((ch) => ch.text?.toString().slice(2));
+                let lines = await songs?.toString().split("\n");
+                                
                 const user = await ctx.prisma.account.findFirst({
                     where: {
                         userId: ctx.session?.user?.id
@@ -74,18 +77,27 @@ export const gameRouter = createRouter()
                 });
 
                 for (let line of lines) {
-                    const data = await getYtSong(line);
-                    const spotifyData = await getSpotifyTrack(line, user?.access_token);
+                    const l = line.slice(3);
+
+                    const data = await getYtSong(l);
+                    const spotifyData = await getSpotifyTrack(l, user?.access_token);
                     
-                    obj.push({
+                    // console.log(spotifyData.tracks.items.name, spotifyData.tracks.items.album.images[0])
+                    // console.log(spotifyData.artist.items.images[0].url)
+
+                    await obj.push({
                         audio: {
                             artist: {
-                                name: spotifyData.artist.items.name || "undefined",
+                                name: spotifyData.artist.items?.name as string,
+                                id: spotifyData.artist.items?.id as string,
+                                link: spotifyData.artist.items?.external_url?.spotify as string,
+                                image_url: spotifyData.artist.items?.images[0]?.url ? spotifyData.artist.items?.images[0]?.url : "https://cdn.wallpapersafari.com/15/64/s0zmcy.jpg",
                             },
-                            id: spotifyData.tracks.items.id,
-                            name: spotifyData.tracks.items.name,
-                            type: spotifyData.tracks.items.type,
-                            preview_url: spotifyData.tracks.items.preview_url
+                            id: spotifyData.tracks.items?.id as string,
+                            name: spotifyData.tracks.items?.name as string,
+                            type: spotifyData.tracks.items?.type as string,
+                            image_url: spotifyData.tracks.items?.album.images[0]?.url ? spotifyData.tracks.items?.album.images[0]?.url : "https://cdn.wallpapersafari.com/15/64/s0zmcy.jpg",
+                            preview_url: spotifyData.tracks.items?.preview_url as string
                         },
                         video: {
                             id: data.video.id as string,

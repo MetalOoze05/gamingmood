@@ -57,12 +57,22 @@ const Form: React.FC<{ session: any, ctx: any }> = ({ session, ctx }) => {
                 <button onClick={() => setSubmitted(false)} className="max-w-fit text-neutral-500 underline">i want to play another game</button>
                 <p className="text-yellow-500 max-w-2xl text-xs">⚠ Sometimes our AI might not give you the perfect results, kindly re-generate songs if you are not satisfied enough!</p>
                 {data?.map((song: Response, index: number) => (
-                    <div key={index} className="p-6 bg-neutral-900 rounded-md flex flex-row gap-5 justify-start items-center">
-                        <Image className="rounded-md" src={song.video.thumbnail.url} height={144} width={256} alt={song.video.title} />
-                        <div className="flex flex-col gap-2 justify-center">
-                            <h1 className="font-bold text-xl">{song.audio.name}</h1>
-                            <p className="font-medium text-neutral-500 text-sm">{song.audio.artist?.name}</p>
-                            <Link className="text-sm text-green-400" href={"https://youtube.com/watch?v=" + song.video.id}>Listen on Spotify!</Link>
+                    <div key={index} className="p-6 bg-neutral-900 rounded-md flex flex-row gap-5 justify-between items-center">
+                        <div className="flex flex-row gap-5 items-center justify-start">
+                            <Image className="rounded-md" src={song.audio.image_url} height={200} width={200} alt={song.audio.name} />
+                            <div className="flex flex-col gap-3">
+                                <h1 className="font-bold text-2xl max-w-2xl">{song.audio?.name}</h1>
+                                <div className="flex flex-row gap-2 justify-start items-center font-medium text-neutral-500 text-sm">
+                                    <Image className="rounded-full" src={song.audio.artist?.image_url} width={20} height={20} alt={song.audio.artist?.name} />
+                                    {song.audio.artist?.name}
+                                </div>
+                                <Link className="font-medium text-sm text-green-500" href={"https://open.spotify.com/track/" + song.audio.id}>Listen on Spotify!</Link>
+                            </div>
+                        </div>
+                        <div>
+                            <audio controls>
+                                <source src={song.audio.preview_url} />
+                            </audio>
                         </div>
                     </div>
                 ))}
