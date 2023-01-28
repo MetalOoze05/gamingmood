@@ -13,7 +13,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export type Response = {
-    video: {
+    video?: {
         id: string,
         title: string,
         duration: string,
@@ -79,7 +79,7 @@ export const gameRouter = createRouter()
                 for (const line of lines) {
                     const l = line.slice(3);
 
-                    const data = await getYtSong(l);
+                    // const data = await getYtSong(l);
                     const spotifyData = await getSpotifyTrack(l, user?.access_token);
                     
                     // console.log(spotifyData.tracks.items.name, spotifyData.tracks.items.album.images[0])
@@ -99,24 +99,24 @@ export const gameRouter = createRouter()
                             image_url: spotifyData.tracks.items?.album.images[0]?.url ? spotifyData.tracks.items?.album.images[0]?.url : "https://cdn.wallpapersafari.com/15/64/s0zmcy.jpg",
                             preview_url: spotifyData.tracks.items?.preview_url as string
                         },
-                        video: {
-                            id: data.video.id as string,
-                            title: data.video.title as string,
-                            duration: data.video.duration as unknown as string,
-                            uploadedAt: data.video.uploadedAt as string,
+                        // video: {
+                        //     id: data.video.id as string,
+                        //     title: data.video.title as string,
+                        //     duration: data.video.duration as unknown as string,
+                        //     uploadedAt: data.video.uploadedAt as string,
     
-                            thumbnail: {
-                                id: data.video.thumbnail?.id as string,
-                                width: data.video.thumbnail?.width as number,
-                                height: data.video.thumbnail?.height as number,
-                                url: data.video.thumbnail?.url as string,
-                            },
+                        //     thumbnail: {
+                        //         id: data.video.thumbnail?.id as string,
+                        //         width: data.video.thumbnail?.width as number,
+                        //         height: data.video.thumbnail?.height as number,
+                        //         url: data.video.thumbnail?.url as string,
+                        //     },
     
-                            channel: {
-                                name: data.video.channel?.name as string,
-                                id: data.video.channel?.id as string
-                            },
-                        }
+                        //     channel: {
+                        //         name: data.video.channel?.name as string,
+                        //         id: data.video.channel?.id as string
+                        //     },
+                        // }
                     })
                 }
                 
