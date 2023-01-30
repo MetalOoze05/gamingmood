@@ -63,7 +63,7 @@ const Form: React.FC<{ session: any, ctx: any }> = ({ session, ctx }) => {
                             <div className="flex flex-col justify-center items-center md:items-start flex-wrap gap-3">
                                 <h1 className="font-bold text-center md:text-left text-md md:text-2xl md:max-w-2xl">{song.audio?.name}</h1>
                                 <div className="text-xs md:text-sm flex flex-row gap-2 justify-center md:justify-start items-center font-medium text-neutral-500">
-                                    <Image className="rounded-full" src={song.audio.artist?.image_url} width={20} height={20} alt={song.audio.artist?.name} />
+                                    {/* <Image className="rounded-full" src={song.audio.artist?.image_url} width={20} height={20} alt={song.audio.artist?.name} /> */}
                                     {song.audio.artist?.name}
                                 </div>
                                 <Link className="font-medium text-sm text-green-500" href={"https://open.spotify.com/track/" + song.audio.id}>Listen on Spotify!</Link>
