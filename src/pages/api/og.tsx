@@ -1,3 +1,5 @@
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ImageResponse } from "@vercel/og";
 import type { NextRequest, NextResponse } from "next/server";
 
@@ -29,7 +31,7 @@ export default async (req: NextRequest, res: NextResponse) => {
                     <div tw="flex flex-col items-center justify-center">
                         <div tw="flex flex-row justify-center items-center">
                             {/* <img tw="shadow-lg shadow-purple-500/50 h-20 w-20 rounded-lg" src="https://avatars.githubusercontent.com/u/38457291?v=4" alt="face" /> */}
-                            <h1 tw="text-center text-neutral-100 text-3xl font-medium">idk.</h1>
+                            <h1 tw="text-center text-neutral-100 text-3xl font-medium">gamingmood</h1>
                         </div>
                         <h2 tw="mt-16 text-center text-neutral-200 text-5xl">{title}</h2>
                     </div>

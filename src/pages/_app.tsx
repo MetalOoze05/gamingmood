@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
@@ -5,9 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { withTRPC } from "@trpc/next";
-import { useRouter } from "next/router";
 import superjson from "superjson";
-import type { AppRouter } from "../server/router";
 
 import "../styles/globals.css";
 
@@ -21,17 +21,17 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>idk.</title>
-        <meta property="title" content="idk." />
+        <title>Gamingmood - Create the perfect playlist for the game you&amp;re playing</title>
+        <meta property="title" content="Gamingmood" />
         <meta property="description" content="Create the perfect playlist for the game you're playing!" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="idk." />
+        <meta property="og:title" content="Gamingmood" />
         <meta property="od:description" content="Create the perfect playlist for the game you're playing!" />
         <meta property="og:image" content="https://idk-zeta.vercel.app/api/og" /> 
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content="idk." />
+        <meta property="twitter:title" content="Gamingmood" />
         <meta property="twitter:description" content="Create the perfect playlist for the game you're playing!" />
         <meta property="twitter:image" content="https://idk-zeta.vercel.app/api/og" /> 
       </Head>

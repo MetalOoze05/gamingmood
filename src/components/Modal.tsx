@@ -2,7 +2,7 @@ import React from 'react';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
-const Modal: React.FC<{ session: any }> = ({ session }) => {
+const Modal: React.FC<{ session: unknown }> = ({ session }) => {
     if (!session) {
         return (
             <>

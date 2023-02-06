@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className="py-5 flex flex-row gap-5 border-white">
                 <div className="w-full flex justify-between items-center">
                     <div className="flex gap-5">
-                        <Link className='font-bold text-lg' href={"/"}>idk.</Link>
+                        <Link className='font-bold text-lg' href={"/"}>gamingmood.</Link>
                     </div>
                     <div className="flex gap-5">
                         <LoginBtn session={session} />

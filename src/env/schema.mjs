@@ -22,7 +22,8 @@ export const serverSchema = z.object({
   DISCORD_CLIENT_ID: z.string(),
   DISCORD_CLIENT_SECRET: z.string(),
   SPOTIFY_CLIENT_ID: z.string(),
-  SPOTIFY_CLIENT_SECRET: z.string()
+  SPOTIFY_CLIENT_SECRET: z.string(),
+  OPENAI_API_KEY: z.string(),
 });
 
 /**
@@ -38,7 +39,8 @@ export const serverEnv = {
   DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
-  SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET
+  SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY
 };
 
 /**
